@@ -1,15 +1,16 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import PostsList from '../PostsList/PostsList';
 import Spinner from '../../common/Spinner/Spinner';
 import Alert from '../../common/Alert/Alert';
+import HtmlBox from '../../common/HtmlBox/HtmlBox';
+import SmallTitle from '../../common/SmallTitle/SmallTitle';
+import { withRouter } from "react-router-dom";
 
-
-class Posts extends React.Component {
+class PostSingle extends React.Component {
 
   componentDidMount() {
-    const { loadPosts } = this.props;
-    loadPosts();
+    const { loadPost, match } = this.props;
+    loadPost(match.params.id);
   }
 
   render() {
@@ -19,7 +20,10 @@ class Posts extends React.Component {
         <Spinner /> 
       ) : request.success ? ( 
          posts.length > 0 ? (
-          <PostsList posts={posts} /> 
+            <article>
+                <SmallTitle>{post.title}</SmallTitle>
+                <HtmlBox>{post.content}</HtmlBox>
+            </article> 
       ) : ( 
         <Alert variant="info"> No posts!!! </Alert>
       )) : ( 
@@ -39,9 +43,10 @@ Posts.propTypes = {
       id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
+      match: PropTypes.object.isRequired,
     })
   ),
-  loadPosts: PropTypes.func.isRequired,
+  loadPost: PropTypes.func.isRequired,
 };
 
-export default Posts;
+export default withRouter(props => <PostSingle {...props} />);
