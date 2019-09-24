@@ -21,8 +21,8 @@ class PostSingle extends React.Component {
       ) : request.success ? ( 
          posts.length > 0 ? (
             <article>
-                <SmallTitle>{post.title}</SmallTitle>
-                <HtmlBox>{post.content}</HtmlBox>
+                <SmallTitle>{posts.title}</SmallTitle>
+                <HtmlBox>{posts.content}</HtmlBox>
             </article> 
       ) : ( 
         <Alert variant="info"> No posts!!! </Alert>
@@ -37,7 +37,7 @@ class PostSingle extends React.Component {
 
 };
 
-Posts.propTypes = {
+PostSingle.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
