@@ -69,7 +69,7 @@ const initialState = {
     error: null,
     success: null,
   },
-  singlePost: {},
+  singlePost: [],
 };
 
 /* REDUCER */
