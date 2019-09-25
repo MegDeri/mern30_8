@@ -21,8 +21,8 @@ class PostSingle extends React.Component {
       ) : request.success ? ( 
          posts.length > 0 ? (
             <article className="post-summary">
-                <SmallTitle>{posts.title}</SmallTitle>
-                <HtmlBox>{posts.content}</HtmlBox>
+                <SmallTitle>{posts[0].title}</SmallTitle>
+                <HtmlBox>{posts[0].content}</HtmlBox>
             </article> 
       ) : ( 
         <Alert variant="info"> No posts!!! </Alert>
