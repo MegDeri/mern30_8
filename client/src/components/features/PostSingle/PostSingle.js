@@ -1,15 +1,15 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { withRouter } from "react-router-dom";
 import Spinner from '../../common/Spinner/Spinner';
 import Alert from '../../common/Alert/Alert';
 import HtmlBox from '../../common/HtmlBox/HtmlBox';
 import SmallTitle from '../../common/SmallTitle/SmallTitle';
-import { withRouter } from "react-router-dom";
 
 class PostSingle extends React.Component {
 
   componentDidMount() {
-    const { loadPost, match } = this.props;
+    const { loadPost, match} = this.props;
     loadPost(match.params.id);
   }
 
@@ -20,7 +20,7 @@ class PostSingle extends React.Component {
         <Spinner /> 
       ) : request.success ? ( 
          posts.length > 0 ? (
-            <article>
+            <article className="post-summary">
                 <SmallTitle>{posts.title}</SmallTitle>
                 <HtmlBox>{posts.content}</HtmlBox>
             </article> 
@@ -43,7 +43,6 @@ PostSingle.propTypes = {
       id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
-      match: PropTypes.object.isRequired,
     })
   ),
   loadPost: PropTypes.func.isRequired,
