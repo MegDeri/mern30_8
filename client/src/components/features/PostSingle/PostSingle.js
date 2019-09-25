@@ -48,5 +48,5 @@ PostSingle.propTypes = {
   loadPost: PropTypes.func.isRequired,
 };
 
-export default PostSingle;
-//export default withRouter(props => <PostSingle {...props} />);
+
+export default withRouter(props => <PostSingle {...props} />);

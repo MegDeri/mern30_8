@@ -24,6 +24,4 @@ PostSummary.propTypes = {
   content: PropTypes.string,
 };
 
-
-
 export default PostSummary;
